@@ -1,6 +1,6 @@
 const StaticFiles = ['/', 'board.js', 'board-style.css', 'guess-component.js','manifest.json',
      'index.html', 'index.js', 'fontawesome/all.css', 'webfonts/fa-solid-900.woff2'
-, 'recorder.js', 'serviceWorker.js', 'images/icon-192.png', 'images-favicon-32x32.png'];
+, 'recorder.js', 'serviceWorker.js', 'images/icon-192.png', 'images/favicon-32x32.png'];
 const CACHE_NAME = 'multipliction';
 addEventListener('activate', function(event) {
     event.waitUntil(
