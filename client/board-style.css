@@ -69,7 +69,8 @@ progress[value]::-webkit-progress-bar {
      border-width: 1px;
      text-align: center;
      vertical-align: middle;
-     width: 2em;
+     width: 3em;
+    height: 4vh;
     border-left-style: solid;
     border-bottom-style: solid;
  }

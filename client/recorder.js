@@ -13,7 +13,10 @@ export class RecordingComponent extends HTMLElement {
             console.error('No storage key');
             return;
         }
-        this.player.src = localStorage[storageKey.value];
+        const url = localStorage[storageKey.value];
+        if (url) {
+            this.player.src = url;
+        }
     }
     enqueue() {
         this.playerQueue.push('');
@@ -86,7 +89,7 @@ export class RecordingComponent extends HTMLElement {
     render() {
         this.innerHTML = `<button> <i class="fas fa-microphone" style="font-size: 2em;"></i></button>
                                             
-                <audio controls id="recorder" type="audio/mpeg"></audio>`
+                <audio controls id="recorder" type="audio/webm"></audio>`
          ;
         this.style.display = 'flex';
 

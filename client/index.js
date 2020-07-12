@@ -1,8 +1,9 @@
 import './board.js';
 import './recorder.js';
 
-const registration = navigator.serviceWorker.register('./serviceWorker.js');
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    const registration = await navigator.serviceWorker.register('./serviceWorker.js');
+    console.log('registered', registration);
     const refreshBotton = document.querySelector('button[role="button"]');
     const board = document.querySelector('multipliction-board');
     const allSuccessRecorder = document.querySelector('recording-component[data-role="all-success"]');
