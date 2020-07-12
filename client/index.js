@@ -21,5 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
         mistakeRecorder.play();
     })
 
+    const cacheRecord = evt => {
+        fetch(evt.detail).then((resp) => {
+            localStorage[evt.target.attributes['storage-key'].value] =  evt.detail
+            caches.open('multipliction')
+                .then(cache => {
+                    cache.put(evt.detail.replace('blob:', ''), resp);
+                })
+        });
+    }
+    successRecorder.addEventListener('recorded', cacheRecord);
+    allSuccessRecorder.addEventListener('recorded', cacheRecord);
+    mistakeRecorder.addEventListener('recorded', cacheRecord);
+
+
 
 })

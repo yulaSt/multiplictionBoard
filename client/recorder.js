@@ -4,8 +4,17 @@ export class RecordingComponent extends HTMLElement {
         this.playerQueue = [];
         this.render();
         this.setEvents();
+        this.setPlayerSource();
     }
 
+    setPlayerSource() {
+        const storageKey = this.attributes['storage-key'];
+        if (!storageKey) {
+            console.error('No storage key');
+            return;
+        }
+        this.player.src = localStorage[storageKey.value];
+    }
     enqueue() {
         this.playerQueue.push('');
     }
@@ -63,9 +72,10 @@ export class RecordingComponent extends HTMLElement {
 
             mediaRecorder.addEventListener('stop', () => {
 
-               const audioUrl = URL.createObjectURL(new Blob(recordedChunks));
+               const audioUrl = URL.createObjectURL(new Blob(recordedChunks, {type: "audio/webm"}));
                 this.player.src = audioUrl;
-                this.querySelector('a').href = audioUrl;
+                this.dispatchEvent(new CustomEvent('recorded', {detail: audioUrl}));
+
             });
 
         }
@@ -76,8 +86,8 @@ export class RecordingComponent extends HTMLElement {
     render() {
         this.innerHTML = `<button> <i class="fas fa-microphone" style="font-size: 2em;"></i></button>
                                             
-                <audio controls id="recorder">
-            <a>Download</a>`;
+                <audio controls id="recorder" type="audio/mpeg"></audio>`
+         ;
         this.style.display = 'flex';
 
     }
