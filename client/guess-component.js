@@ -45,7 +45,7 @@ export class GuessComponent extends HTMLElement {
     }
 
     render() {
-        this.innerHTML = `<label><div style="max-width: 0; max-height: 0; color: white; overflow: hidden">${this.row}X${this.col}</div><input type="text"></label>`
+        this.innerHTML = `<label><div style="max-width: 0; max-height: 0; color: white; overflow: hidden">${this.row}X${this.col}</div><input type="number"></label>`
     }
 }
 
