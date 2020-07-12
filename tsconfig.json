@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "target": "es6",
     "outDir": "dist",
     "sourceMap": true
   },
+
   "lib": ["es2015"],
   "exclude": [
     "node_modules"
