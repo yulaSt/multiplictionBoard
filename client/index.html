@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multipiction board</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="stylesheet" href="fontawesome/all.css">
+    <link rel="stylesheet" href="board-style.css">
+
+    <script type="module" src="index.js"></script>
+</head>
+<body>
+<multipliction-board></multipliction-board>
+
+<button role="button" title="refresh"><i class="fas fa-sync"></i></button>
+<div style="direction: rtl">
+    <div>
+        מה להגיד במקרה של תשובה נכונה?
+        <recording-component data-role="success"></recording-component>
+    </div>
+    <div>
+        מה להגיד במקרה של תשובה שגויה?
+        <recording-component data-role="mistake"></recording-component>
+    </div>
+    <div>
+        מה להגיד בסוף? אחרי שהצלחנו הכל?
+        <recording-component data-role="all-success"></recording-component>
+    </div>
+</div>
+</body>
+</html>
