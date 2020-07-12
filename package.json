@@ -14,9 +14,7 @@
     "@fortawesome/fontawesome-free": "^5.13.1",
     "@types/node": "^13.13.4",
     "express": "^4.17.1",
-    "tsc": "^1.20150623.0"
-  },
-  "devDependencies": {
+    "tsc": "^1.20150623.0",
     "typescript": "^3.9.6"
   }
 }
