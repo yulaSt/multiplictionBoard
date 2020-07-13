@@ -58,7 +58,7 @@ export class RecordingComponent extends HTMLElement {
         let mediaRecorder;
         const microphoneButton = this.microphone;
         this.microphone.onclick =  microphoneButton.ontouchstart = microphoneButton.ontouchend =  async () => {
-            const permissionStatus = navigator.permissions && navigator.permissions.request.request ?
+            const permissionStatus = navigator.permissions && navigator.permissions.request ?
                 (await navigator.permissions.request({name: 'microphone'})) : {state: 'granted'};
             if (permissionStatus.state !== 'granted') {
                 return;
