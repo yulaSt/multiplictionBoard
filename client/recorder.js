@@ -1,7 +1,11 @@
 export class RecordingComponent extends HTMLElement {
 
-    connectedCallback() {
+    constructor() {
+        super();
         this.playerQueue = [];
+    }
+
+    connectedCallback() {
         this.render();
         this.setEvents();
         this.setPlayerSource();
@@ -52,12 +56,13 @@ export class RecordingComponent extends HTMLElement {
     async setEvents() {
         let recording = false;
         let mediaRecorder;
-        const microphoneButton = this.querySelector('button');
-        microphoneButton.onclick =  microphoneButton.ontouchstart = microphoneButton.ontouchend =  async () => {
+        const microphoneButton = this.microphone;
+        this.microphone.onclick =  microphoneButton.ontouchstart = microphoneButton.ontouchend =  async () => {
             const permissionStatus = await navigator.permissions.request({name: 'microphone'});
             if (permissionStatus.state !== 'granted') {
                 return;
             }
+            this.player.classList.toggle('recording')
             this.microphone.classList.toggle('fa-microphone');
             this.microphone.classList.toggle('fa-microphone-slash');
             const recordedChunks = [];
