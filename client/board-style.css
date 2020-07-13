@@ -19,7 +19,7 @@ button[role="button"] {
 progress {
     -webkit-appearance: none;
     appearance: none;
-    width: 324px;
+    width: 100%;
     height: 20px;
 }
 
