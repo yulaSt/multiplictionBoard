@@ -1,6 +1,7 @@
 {
   "short_name": "Multipliction Board",
   "name": "multipliction-board",
+  "scope": "/",
   "start_url": "/index.html",
   "icons": [
     {"src": "images/icon-192.png", "type": "image/png", "sizes": "192x192"},
