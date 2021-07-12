@@ -84,12 +84,14 @@ progress[value]::-webkit-progress-bar {
 
 .cell {
     border-width: 1px;
-    text-align: center;
-    vertical-align: middle;
     width: 3em;
-    height: 4vh;
+    height: 3em;
     border-left-style: solid;
     border-bottom-style: solid;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    justify-content: space-around;
 }
 
 .cell:first-child {

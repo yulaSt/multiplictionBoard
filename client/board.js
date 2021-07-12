@@ -3,22 +3,32 @@ import './guess-component.js';
 export class MultiplictionBoard extends HTMLElement {
     constructor() {
         super();
-        this.answer = (evt) => {
-            const {isRight} = evt.detail;
-            if (isRight) {
-                this.querySelector('progress').value++;
-                if (this.querySelector('progress').value === this.guesses) {
-                    this.dispatchEvent(new CustomEvent('play-all-success'));
-                } else {
-                    this.dispatchEvent(new CustomEvent('play-success'))
-                }
-            } else {
-                this.dispatchEvent(new CustomEvent('play-mistake'))
-            }
-        }
+       
     }
     connectedCallback() {
         this.render();
+    }
+
+    answer = (evt) => {
+        const {isRight} = evt.detail;
+        const {target} = evt;
+        const cell = target.parentNode;
+
+        if (isRight) {
+            cell.classList.add('right');
+            cell.classList.remove('wrong');
+            cell.innerText = target.row*target.col;
+            this.querySelector('progress').value++;
+            if (this.querySelector('progress').value === this.guesses) {
+                this.dispatchEvent(new CustomEvent('play-all-success'));
+            } else {
+                this.dispatchEvent(new CustomEvent('play-success'))
+            }
+        } else {
+            cell.classList.add('wrong');
+            cell.classList.remove('right');
+            this.dispatchEvent(new CustomEvent('play-mistake'))
+        }
     }
 
     renderCell(row, col) {
