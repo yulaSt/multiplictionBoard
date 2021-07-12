@@ -1,7 +1,9 @@
-const StaticFiles = ['/', 'board.js', 'board-style.css', 'guess-component.js','manifest.json',
-     'index.html', 'index.js', 'fontawesome/all.css', 'webfonts/fa-solid-900.woff2'
+const staticFiles = ['client/', 'board.js', 'board-style.css', 'guess-component.js','manifest.json',
+     'index.html', 'index.js', 'webfonts/fa-solid-900.woff2'
 , 'recorder.js', 'serviceWorker.js', 'images/icon-192.png', 'images/favicon-32x32.png'];
-const CACHE_NAME = 'multipliction';
+
+const cacheName = 'multiplication';
+
 addEventListener('activate', function(event) {
     event.waitUntil(
         caches.keys().then(function (cacheNames) {
@@ -52,10 +54,7 @@ self.addEventListener('fetch', function (event) {
     );
 });
 
-addEventListener('install', evt => {
-    evt.waitUntil(
-        caches.open(CACHE_NAME).then(cacheOpen => {
-            return cacheOpen.addAll(StaticFiles);
-        })
-    );
+self.addEventListener('install', (event) => {
+    console.log('Service worker install event!');
+    event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(staticFiles)));
 })

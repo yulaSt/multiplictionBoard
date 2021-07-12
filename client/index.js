@@ -1,9 +1,17 @@
 import './board.js';
 import './recorder.js';
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const registration = await navigator.serviceWorker.register('./serviceWorker.js');
-    console.log('registered', registration);
+// Register the service worker
+if ('serviceWorker' in navigator) {
+    // Wait for the 'load' event to not block other work
+    window.addEventListener('load', async () => {
+    try {
+        const registration = await navigator.serviceWorker.register('./serviceWorker.js');
+        console.log('registered', registration);
+    } catch (err) {
+        console.log('😥 Service worker registration failed: ', err);
+    }
+    
     const refreshBotton = document.querySelector('button[role="button"]');
     const board = document.querySelector('multipliction-board');
     const allSuccessRecorder = document.querySelector('recording-component[data-role="all-success"]');
@@ -35,6 +43,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     allSuccessRecorder.addEventListener('recorded', cacheRecord);
     mistakeRecorder.addEventListener('recorded', cacheRecord);
 
-
-
 })
+}
