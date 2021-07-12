@@ -5,14 +5,6 @@ export class GuessComponent extends HTMLElement {
         this.onChange = () => {
             const value = +this.inputElement.value;
             const isRight = value === (this.row * this.col);
-            if (isRight) {
-                this.inputElement.classList.add('right')
-                this.inputElement.classList.remove('wrong')
-                this.inputElement.readOnly = true;
-            } else {
-                this.inputElement.classList.remove('right')
-                this.inputElement.classList.add('wrong')
-            }
             this.dispatchEvent(new CustomEvent('answer', {detail: {isRight}}));
         };
     }
